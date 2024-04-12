@@ -7,11 +7,23 @@ import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import DashboardPage from "./components/pages/DashboardPage";
 
-axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+// Configurazione di axios
+axios.defaults.baseURL = "https://mock-api.binaryboxtuts.com";
 axios.interceptors.request.use(function (config) {
-  config.headers["X-Binarybox-Api-Key"] = process.env.VUE_APP_API_KEY;
+  config.headers["X-Binarybox-Api-Key"] =
+    "binarybox_api_key_VzO8M31mfzUAW58MBuDkyVX68IWufWJWW7m5BqqSi3FSXHHwKeHjuXQzOC7QdACzffplQ93npFb6Q3sMQLeImXxkz3IHQDkWy1yt";
   return config;
 });
+
+// Esecuzione della richiesta dopo la configurazione di axios
+axios
+  .get("/api/test")
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 const router = createRouter({
   history: createWebHistory(),
