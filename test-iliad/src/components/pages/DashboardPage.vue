@@ -15,6 +15,16 @@
                     </div>
                 </nav>
                 <h2 class="text-center mt-5">Welcome, {{ user?.name }}!</h2>
+                <div v-if="products.length > 0" class="mt-4">
+                    <h3 class="text-center">Products</h3>
+
+                    <div v-for="product in products" :key="product.id">
+                        <div v-for="item in product" :key="item.id">
+                            <p>{{ item.title }}</p>
+                        </div>
+                        <!-- <p>{{ product[0] }}</p> -->
+                    </div>
+                </div>
             </div>
         </div>
     </layout-div>
@@ -32,17 +42,21 @@ export default {
     data() {
         return {
             user: {},
+            products: [],
         };
     },
     created() {
         this.getUser();
-        if (localStorage.getItem('token') == "" || localStorage.getItem('token') == null) {
-            this.$router.push('/')
-        } else {
-            this.getUser();
-        }
-
     },
+    mounted() {
+        if (!localStorage.getItem('token')) {
+            this.$router.push('/');
+        } else {
+            this.getProducts();
+        }
+    },
+
+
     methods: {
         getUser() {
             axios.get('/api/user', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
@@ -65,7 +79,21 @@ export default {
                 .catch((e) => {
                     return e
                 });
-        }
+        },
+
+        getProducts() {
+            axios.get('https://dummyjson.com/products')
+                .then((response) => {
+                    this.products = Object.values(response.data);
+                    console.log(this.products);
+                    return response;
+
+                })
+                .catch((error) => {
+                    console.error(error);
+                    return error;
+                });
+        },
 
     },
 };
