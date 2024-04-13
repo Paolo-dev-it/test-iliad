@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Register</h5>
-                        <form>
+                        <form @submit.prevent="registerAction">
                             <div class="mb-3">
                                 <label htmlFor="name" class="form-label">Name
                                 </label>
@@ -13,6 +13,61 @@
                                 <div v-if="validationErrors.name" class="flex flex-col">
                                     <small class="text-danger">
                                         {{ validationErrors?.name[0] }}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label htmlFor="surname" class="form-label">Surname
+                                </label>
+                                <input type="text" class="form-control" id="surname" name="surname" v-model="surname" />
+                                <div v-if="validationErrors.surname" class="flex flex-col">
+                                    <small class="text-danger">
+                                        {{ validationErrors?.surname[0] }}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label htmlFor="birthdate" class="form-label">Date of Birth
+                                </label>
+                                <input type="date" class="form-control" id="birthdate" name="birthdate"
+                                    v-model="birthdate" />
+                                <div v-if="validationErrors.birthdate" class="flex flex-col">
+                                    <small class="text-danger">
+                                        {{ validationErrors?.birthdate[0] }}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label htmlFor="city_of_birth" class="form-label">City of Birth
+                                </label>
+                                <input type="text" class="form-control" id="city_of_birth" name="city_of_birth"
+                                    v-model="city_of_birth" />
+                                <div v-if="validationErrors.city_of_birth" class="flex flex-col">
+                                    <small class="text-danger">
+                                        {{ validationErrors?.city_of_birth[0] }}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label htmlFor="tax_code" class="form-label">Tax Code
+                                </label>
+                                <input type="text" class="form-control" id="tax_code" name="tax_code" v-model="tax_code" />
+                                <div v-if="validationErrors.tax_code" class="flex flex-col">
+                                    <small class="text-danger">
+                                        {{ validationErrors?.tax_code[0] }}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label htmlFor="gender" class="form-label">Gender
+                                </label>
+                                <select class="form-select" id="gender" name="gender" v-model="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <div v-if="validationErrors.gender" class="flex flex-col">
+                                    <small class="text-danger">
+                                        {{ validationErrors?.gender[0] }}
                                     </small>
                                 </div>
                             </div>
@@ -44,9 +99,8 @@
                                     v-model="confirmPassword" />
                             </div>
                             <div class="d-grid gap-2">
-                                <button :disabled="isSubmitting" @click="registerAction()" type="button"
-                                    class="btn btn-primary btn-block">Register Now
-                                </button>
+                                <button :disabled="isSubmitting" type="submit" class="btn btn-primary btn-block">Register
+                                    Now</button>
                                 <p class="text-center">Have already an account <router-link to="/">Login here</router-link>
                                 </p>
                             </div>
@@ -70,6 +124,11 @@ export default {
     data() {
         return {
             name: '',
+            surname: '',
+            birthdate: '',
+            city_of_birth: '',
+            tax_code: '',
+            gender: 'male',
             email: '',
             password: '',
             confirmPassword: '',
@@ -87,6 +146,11 @@ export default {
             this.isSubmitting = true
             let payload = {
                 name: this.name,
+                surname: this.surname,
+                birthdate: this.birthdate,
+                city_of_birth: this.city_of_birth,
+                tax_code: this.tax_code,
+                gender: this.gender,
                 email: this.email,
                 password: this.password,
                 password_confirmation: this.confirmPassword
