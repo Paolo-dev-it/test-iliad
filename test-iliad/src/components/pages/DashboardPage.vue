@@ -17,14 +17,22 @@
                 <h2 class="text-center mt-5">Welcome, {{ user?.name }}!</h2>
                 <div v-if="products.length > 0" class="mt-4">
                     <h3 class="text-center">Products</h3>
+                    <div class="row">
+                        <div v-for="product in products[0]" :key="product.id" class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img :src="product.images" class="card-img-top" alt="Product Thumbnail">
+                                    <h5 class="card-title">{{ product.title }}</h5>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    <p class="card-text">Price: ${{ product.price }}</p>
+                                    <a href="#" class="btn btn-primary">View Details</a>
+                                </div>
+                            </div>
 
-                    <div v-for="product in products" :key="product.id">
-                        <div v-for="item in product" :key="item.id">
-                            <p>{{ item.title }}</p>
                         </div>
-                        <!-- <p>{{ product[0] }}</p> -->
                     </div>
                 </div>
+
             </div>
         </div>
     </layout-div>
