@@ -6,6 +6,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import DashboardPage from "./components/pages/DashboardPage";
+import CreateProduct from "./components/pages/CreateProduct.vue";
+import EditProduct from "./components/pages/EditProduct.vue";
 
 // Configurazione di axios
 axios.defaults.baseURL = "https://mock-api.binaryboxtuts.com";
@@ -30,7 +32,14 @@ const router = createRouter({
   routes: [
     { path: "/", component: LoginPage },
     { path: "/register", component: RegisterPage },
-    { path: "/dashboard", component: DashboardPage },
+    { path: "/dashboard", name: "DashboardPage", component: DashboardPage },
+    {
+      path: "/create",
+      name: "CreateProduct",
+      component: CreateProduct,
+      props: true,
+    },
+    { path: "/edit/:id", name: "EditProduct", component: EditProduct },
   ],
 });
 
