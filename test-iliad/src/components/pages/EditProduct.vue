@@ -54,17 +54,15 @@ export default {
     methods: {
 
 
-        fetchProduct(productId) {
-            axios.get(`https://dummyjson.com/products/${productId}`)
-                .then((response) => {
-                    this.editedProduct = response.data;
-
-                })
-                .catch((error) => {
-                    console.error(error);
-                    // Gestisci l'errore mostrando un messaggio all'utente o reindirizzandolo alla DashboardPage
-                    this.$router.push({ name: 'DashboardPage' });
-                });
+        async fetchProduct(productId) {
+            try {
+                const response = await axios.get(`https://dummyjson.com/products/${productId}`);
+                this.editedProduct = response.data; // Assegna i dati ricevuti alla proprietà editedProduct
+            } catch (error) {
+                console.error(error);
+                // Gestisci l'errore mostrando un messaggio all'utente o reindirizzandolo alla DashboardPage
+                this.$router.push({ name: 'DashboardPage' });
+            }
         },
 
         updateProduct() {
@@ -79,7 +77,7 @@ export default {
                 axios.put(`https://dummyjson.com/products/${id}`, product)
                     .then(() => {
                         // Emetti un evento di routing personalizzato con l'ID del prodotto aggiornato
-                        this.$router.push({ name: 'DashboardPage', params: { updatedProductId: id } });
+                        this.$router.push({ name: 'DashboardPage', query: { updateProduct: 1 } });
                     })
                     .catch((error) => {
                         console.error('Error updating product:', error);

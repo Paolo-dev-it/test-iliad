@@ -1,10 +1,10 @@
 <template>
     <layout-div>
-        <div class="row justify-content-md-center mt-5">
+        <div class="row justify-content-md-center pt-5 pb-5">
             <div class="col-4">
-                <div class="card">
+                <div class="card no-border">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Register</h5>
+                        <h2 class="card-title mb-4 reg">Registrati</h2>
                         <form @submit.prevent="registerAction">
                             <div class="mb-3">
                                 <label htmlFor="name" class="form-label">Name
@@ -99,7 +99,7 @@
                                     v-model="confirmPassword" />
                             </div>
                             <div class="d-grid gap-2">
-                                <button :disabled="isSubmitting" type="submit" class="btn btn-primary btn-block">Register
+                                <button :disabled="isSubmitting" type="submit" class="btn btn-danger btn-block">Register
                                     Now</button>
                                 <p class="text-center">Have already an account <router-link to="/">Login here</router-link>
                                 </p>
@@ -172,3 +172,13 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.no-border {
+    border: none;
+}
+
+.reg {
+    color: red;
+}
+</style>

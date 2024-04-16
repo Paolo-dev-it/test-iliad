@@ -32,7 +32,11 @@ const router = createRouter({
   routes: [
     { path: "/", component: LoginPage },
     { path: "/register", component: RegisterPage },
-    { path: "/dashboard", name: "DashboardPage", component: DashboardPage },
+    {
+      path: "/dashboard",
+      name: "DashboardPage",
+      component: DashboardPage,
+    },
     {
       path: "/create",
       name: "CreateProduct",

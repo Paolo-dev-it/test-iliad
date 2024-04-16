@@ -19,7 +19,9 @@
                     <label for="images" class="form-label">Images</label>
                     <input type="file" class="form-control" id="images" ref="fileInput" multiple @change="handleFileChange">
                 </div>
-                <button type="submit" class="btn btn-primary">Create Product</button>
+                <button @click="createProduct()" type="submit" class="btn btn-primary">Create Product</button>
+
+
             </form>
         </div>
     </layout-div>
@@ -34,49 +36,34 @@ export default {
     components: {
         LayoutDiv,
     },
-    props: ['addProduct'], // Passa la funzione di aggiunta del prodotto come prop
+
     data() {
         return {
-            products: [],
             newProduct: {
                 title: '',
                 description: '',
                 price: 0,
-                images: [],
+                images: []
             },
-
         };
     },
     methods: {
         createProduct() {
+
             axios.post('https://dummyjson.com/products/add', this.newProduct, {
                 headers: { 'Content-Type': 'application/json' }
             })
                 .then(() => {
-                    // Aggiungi direttamente il nuovo prodotto alla lista dei prodotti
-                    this.products.push(this.newProduct);
-
-                    // Resetta il form
-                    this.newProduct = {
-                        title: '',
-                        description: '',
-                        price: 0,
-                        images: []
-                    };
-
-                    // Reindirizza alla pagina del dashboard
-                    this.$router.push({ name: 'DashboardPage' });
+                    this.$router.push({ name: 'DashboardPage', query: { newProduct: 1 } });
                 })
                 .catch(error => {
                     console.error('Error adding product:', error);
                 });
-        }
-
-
-    }
-
+        },
+    },
 };
 </script>
+
 
 <style scoped>
 /* Stili CSS */
