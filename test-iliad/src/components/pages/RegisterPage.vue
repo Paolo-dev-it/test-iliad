@@ -1,7 +1,7 @@
 <template>
     <layout-div>
         <div class="row justify-content-md-center pt-5 pb-5">
-            <div class="col-4">
+            <div class="col-md-4">
                 <div class="card no-border">
                     <div class="card-body">
                         <h2 class="card-title mb-4 reg">Registrati</h2>

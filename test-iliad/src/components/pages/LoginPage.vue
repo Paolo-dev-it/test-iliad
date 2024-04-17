@@ -2,7 +2,7 @@
     <layout-div>
 
         <div class="row justify-content-md-center pt-5 bg">
-            <div class="col-4">
+            <div class="col-md-4">
                 <div class="card no-border bg">
                     <div class="card-body">
                         <h2 class="card-title mb-4">Accedi alla tua <br><span class="area-personale">area personale</span>

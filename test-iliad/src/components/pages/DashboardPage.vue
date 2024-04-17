@@ -19,12 +19,12 @@
                 </nav>
                 <h5 class="text-end mt-5">Benvenuto, <span class="text-danger">{{ user?.name }}!</span></h5>
                 <div v-if="products.length > 0" class="mt-4">
-                    <div class="d-flex justify-content-end m-5">
+                    <div class="d-flex justify-content-end m-md-5 ">
                         <router-link :to="{ name: 'CreateProduct', params: { products: products } }"
-                            class="btn btn-blue btn-cust d-flex justify-content-center align-items-center fs-4 font-weight-bold"><i
-                                class="bi bi-plus"></i></router-link>
+                            class="btn btn-blue d-flex justify-content-center align-items-center  ">Crea
+                            un nuovo prodotto</router-link>
                     </div>
-                    <h3 class="text-center mb-5 subtitle">Prodotti acquistabili sul nostro sito:</h3>
+                    <h3 class="text-center mb-5 mt-5 subtitle">Prodotti acquistabili sul nostro sito:</h3>
 
                     <!-- <CreateProduct :createProduct="createProduct" /> -->
                     <div class="row">

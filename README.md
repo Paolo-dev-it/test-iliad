@@ -26,7 +26,7 @@ Ho creato le CRUD per la creazione, modifica ed eliminazione dei prodotti. Tutto
 
 Infatti, per la modifica e la creazione del prodotto, una volta premuto il pulsante di conferma delle modifiche, ho implementato un alert che avvisa l'utente che la modifica/creazione è avvenuta correttamente.
 
-Per la creazione del nuovo prodotto basterà premere il bottone con l'icona '+' che reindirizzerà l'utente sulla pagina della creazione.
+Per la creazione del nuovo prodotto basterà premere il bottone 'Crea un nuovo prodotto' che reindirizzerà l'utente sulla pagina della creazione.
 
 Per quanto riguarda l'eliminazione, premendo il bottone con il cestino andremo ad eliminare il prodotto fino ad un nuovo aggiornamento della pagina.
 
