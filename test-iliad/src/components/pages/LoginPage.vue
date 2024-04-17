@@ -16,7 +16,7 @@
                                 </label>
                                 <input v-model="email" type="email" class="form-control" id="email" name="email" />
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label htmlFor="password" class="form-label">Password
                                 </label>
                                 <input v-model="password" type="password" class="form-control" id="password"
@@ -91,11 +91,6 @@ export default {
 </script>
 
 <style scoped>
-.bg {
-    height: 100vh;
-    background-color: rgb(249, 247, 244);
-}
-
 .no-border {
     border: none;
 }

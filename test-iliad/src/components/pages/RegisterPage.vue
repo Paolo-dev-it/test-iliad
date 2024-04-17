@@ -7,7 +7,7 @@
                         <h2 class="card-title mb-4 reg">Registrati</h2>
                         <form @submit.prevent="registerAction">
                             <div class="mb-3">
-                                <label htmlFor="name" class="form-label">Name
+                                <label htmlFor="name" class="form-label">Nome
                                 </label>
                                 <input type="text" class="form-control" id="name" name="name" v-model="name" />
                                 <div v-if="validationErrors.name" class="flex flex-col">
@@ -17,7 +17,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label htmlFor="surname" class="form-label">Surname
+                                <label htmlFor="surname" class="form-label">Cognome
                                 </label>
                                 <input type="text" class="form-control" id="surname" name="surname" v-model="surname" />
                                 <div v-if="validationErrors.surname" class="flex flex-col">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label htmlFor="birthdate" class="form-label">Date of Birth
+                                <label htmlFor="birthdate" class="form-label">Data di nascita
                                 </label>
                                 <input type="date" class="form-control" id="birthdate" name="birthdate"
                                     v-model="birthdate" />
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label htmlFor="city_of_birth" class="form-label">City of Birth
+                                <label htmlFor="city_of_birth" class="form-label">Città di nascita
                                 </label>
                                 <input type="text" class="form-control" id="city_of_birth" name="city_of_birth"
                                     v-model="city_of_birth" />
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label htmlFor="tax_code" class="form-label">Tax Code
+                                <label htmlFor="tax_code" class="form-label">Codice fiscale
                                 </label>
                                 <input type="text" class="form-control" id="tax_code" name="tax_code" v-model="tax_code" />
                                 <div v-if="validationErrors.tax_code" class="flex flex-col">
@@ -59,11 +59,12 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label htmlFor="gender" class="form-label">Gender
+                                <label htmlFor="gender" class="form-label">Genere
                                 </label>
                                 <select class="form-select" id="gender" name="gender" v-model="gender">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    <option value="male">Uomo</option>
+                                    <option value="female">Donna</option>
+                                    <option value="female">Preferisco non dirlo</option>
                                 </select>
                                 <div v-if="validationErrors.gender" class="flex flex-col">
                                     <small class="text-danger">
@@ -72,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label htmlFor="email" class="form-label">Email address
+                                <label htmlFor="email" class="form-label">Indirizzo email
                                 </label>
                                 <input type="email" class="form-control" id="email" name="email" v-model="email" />
                                 <div v-if="validationErrors.email" class="flex flex-col">
@@ -93,15 +94,15 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label htmlFor="confirm_password" class="form-label">Confirm Password
+                                <label htmlFor="confirm_password" class="form-label">Conferma Password
                                 </label>
                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                     v-model="confirmPassword" />
                             </div>
                             <div class="d-grid gap-2">
-                                <button :disabled="isSubmitting" type="submit" class="btn btn-danger btn-block">Register
-                                    Now</button>
-                                <p class="text-center">Have already an account <router-link to="/">Login here</router-link>
+                                <button :disabled="isSubmitting" type="submit" class="btn btn-danger btn-block">Registrati
+                                    ora</button>
+                                <p class="text-center">Hai già un account? <router-link to="/">Login</router-link>
                                 </p>
                             </div>
                         </form>
@@ -176,6 +177,7 @@ export default {
 <style scoped>
 .no-border {
     border: none;
+    background-color: #F5F5F5;
 }
 
 .reg {

@@ -17,16 +17,14 @@
                         </div>
                     </div>
                 </nav>
-                <h5 class="text-end mt-5">Benvenuto, {{ user?.name }}!</h5>
+                <h5 class="text-end mt-5">Benvenuto, <span class="text-danger">{{ user?.name }}!</span></h5>
                 <div v-if="products.length > 0" class="mt-4">
                     <div class="d-flex justify-content-end m-5">
                         <router-link :to="{ name: 'CreateProduct', params: { products: products } }"
-                            class="btn btn-danger btn-cust d-flex justify-content-center align-items-center"><i
+                            class="btn btn-blue btn-cust d-flex justify-content-center align-items-center fs-4 font-weight-bold"><i
                                 class="bi bi-plus"></i></router-link>
-
-
                     </div>
-                    <h3 class="text-center">Prodotti acquistabili sul nostro sito:</h3>
+                    <h3 class="text-center mb-5 subtitle">Prodotti acquistabili sul nostro sito:</h3>
 
                     <!-- <CreateProduct :createProduct="createProduct" /> -->
                     <div class="row">
@@ -37,19 +35,18 @@
                                     <div class="px-4">
                                         <h5 class="card-title mt-4">{{ product.title }}</h5>
                                         <p class="card-text">{{ product.description }}</p>
-                                        <p class="card-text">Price: ${{ product.price }}</p>
+                                        <p class="card-text">Prezzo: €{{ product.price }}</p>
                                     </div>
-                                    <div class="d-flex justify-content-end">
-                                        <router-link :to="{ name: 'EditProduct', params: { id: product.id } }"
-                                            class="btn btn-light">
-                                            <i class="bi bi-pencil"></i>
-                                        </router-link>
-                                        <button @click="deleteProduct(product.id)" class="btn btn-light"><i
-                                                class="bi bi-trash3"></i></button>
-                                    </div>
+
                                 </div>
-
-
+                                <div class="d-flex justify-content-end m-4">
+                                    <router-link :to="{ name: 'EditProduct', params: { id: product.id } }"
+                                        class="btn btn-blue  rounded-start-pill">
+                                        <i class="bi bi-pencil"></i>
+                                    </router-link>
+                                    <button @click="deleteProduct(product.id)" class="btn btn-danger  rounded-end-pill"><i
+                                            class="bi bi-trash3"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,10 +89,10 @@ export default {
             this.getProducts(); // Rifetch dei prodotti solo se è stato aggiornato un prodotto
         }
         if (this.$route.query.newProduct == 1) {
-            alert('prodotto aggiunto')
+            alert('Nuovo prodotto creato')
         }
         if (this.$route.query.updateProduct == 1) {
-            alert('prodotto aggiornato')
+            alert('Prodotto correttamente aggiornato')
         }
     },
 
@@ -194,23 +191,31 @@ export default {
 .nav-cust {
     margin-top: 20px;
     background-color: #fff;
-    border: 1px solid red;
+    padding: 10px;
     border-radius: 30px;
+}
 
+.subtitle {
+    color: #0b3640;
 }
 
 .btn-cust {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+}
+
+.btn-blue {
+    background-color: #0b3640;
+    color: #fff;
 }
 
 .bg {
-    background-color: rgb(249, 247, 244);
+    background-color: #f5f5f5;
 }
 
 .min-height {
-    min-height: 480px;
+    min-height: 530px;
 }
 
 .border-cust {
